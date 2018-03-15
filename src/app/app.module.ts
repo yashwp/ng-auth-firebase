@@ -12,6 +12,8 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {AuthService} from './services/auth.service';
 import {AppRoutes} from './app-routing.module';
+import {AuthGuardService} from './services/auth-guard.service';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,12 +24,13 @@ import {AppRoutes} from './app-routing.module';
   imports: [
     BrowserModule,
     AppRoutes,
+    FormsModule,
     MDBBootstrapModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase, 'ng-auth-firebase'),
     AngularFireDatabaseModule,
     AngularFireAuthModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

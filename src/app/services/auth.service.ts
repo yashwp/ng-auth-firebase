@@ -14,7 +14,6 @@ export class AuthService {
   constructor(private firebaseAuth: AngularFireAuth,
               private router: Router) {
     this.user = this.firebaseAuth.authState;
-
     if (this.user) {
       this.user.subscribe((user) => {
         if (user) {
@@ -22,6 +21,11 @@ export class AuthService {
         }
       });
     }
+  }
+
+  signInRegular(obj: {email, pass}) {
+    const credential = firebase.auth.EmailAuthProvider.credential(obj.email, obj.pass);
+    return this.firebaseAuth.auth.createUserWithEmailAndPassword(obj.email, obj.pass);
   }
 
   signInWithTwitter() {

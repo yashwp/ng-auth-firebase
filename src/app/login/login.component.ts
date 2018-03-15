@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../services/auth.service';
 import {Router} from '@angular/router';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -8,17 +9,36 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+  user: any = {
+    email: '',
+    pass: ''
+  };
+
   constructor(private authService: AuthService,
               private router: Router) { }
 
   ngOnInit() {
   }
 
+  credlogin(f: NgForm, isValid: boolean) {
+    if (isValid) {
+      this.user = {
+        email: f.value.email,
+        pass: f.value.password
+      };
+      this.authService.signInRegular(this.user)
+        .then((res) => {
+            console.log(res);
+            this.router.navigate(['dashboard']);
+          })
+            .catch((err) => console.log('error: ' + err));
+    }
+  }
+
   twitterLogin() {
     this.authService.signInWithTwitter().then((res: any) => {
-      console.log(res);
       this.router.navigate(['dashboard']);
-      localStorage.setItem('token', res.credential.accessToken);
+      localStorage.setItem('auth_token', res.credential.accessToken);
     })
       .catch((err) => console.log(err));
   }
@@ -27,7 +47,7 @@ export class LoginComponent implements OnInit {
     this.authService.signInWithFacebook()
       .then((res) => {
         this.router.navigate(['dashboard']);
-        localStorage.setItem('token', res.credential.accessToken);
+        localStorage.setItem('auth_token', res.credential.accessToken);
 
       })
       .catch((err) => console.log(err));
@@ -36,9 +56,8 @@ export class LoginComponent implements OnInit {
   gitLogin() {
     this.authService.signInWithGitHub()
       .then((res) => {
-        console.log(res);
         this.router.navigate(['dashboard']);
-        localStorage.setItem('token', res.credential.accessToken);
+        localStorage.setItem('auth_token', res.credential.accessToken);
 
       })
       .catch((err) => console.log(err));
@@ -47,9 +66,8 @@ export class LoginComponent implements OnInit {
   googleLogin() {
     this.authService.signInWithGoogle()
       .then((res) => {
-        console.log(res);
         this.router.navigate(['dashboard']);
-        localStorage.setItem('token', res.credential.accessToken);
+        localStorage.setItem('auth_token', res.credential.accessToken);
 
       })
       .catch((err) => console.log(err));
