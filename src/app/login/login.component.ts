@@ -26,8 +26,9 @@ export class LoginComponent implements OnInit {
   fbLogin() {
     this.authService.signInWithFacebook()
       .then((res) => {
-        console.log(res);
         this.router.navigate(['dashboard']);
+        localStorage.setItem('token', res.credential.accessToken);
+
       })
       .catch((err) => console.log(err));
   }
@@ -37,6 +38,8 @@ export class LoginComponent implements OnInit {
       .then((res) => {
         console.log(res);
         this.router.navigate(['dashboard']);
+        localStorage.setItem('token', res.credential.accessToken);
+
       })
       .catch((err) => console.log(err));
   }
@@ -46,6 +49,8 @@ export class LoginComponent implements OnInit {
       .then((res) => {
         console.log(res);
         this.router.navigate(['dashboard']);
+        localStorage.setItem('token', res.credential.accessToken);
+
       })
       .catch((err) => console.log(err));
   }
