@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthService} from '../services/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -6,9 +8,46 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthService,
+              private router: Router) { }
 
   ngOnInit() {
+  }
+
+  twitterLogin() {
+    this.authService.signInWithTwitter().then((res: any) => {
+      console.log(res);
+      this.router.navigate(['dashboard']);
+      localStorage.setItem('token', res.credential.accessToken);
+    })
+      .catch((err) => console.log(err));
+  }
+
+  fbLogin() {
+    this.authService.signInWithFacebook()
+      .then((res) => {
+        console.log(res);
+        this.router.navigate(['dashboard']);
+      })
+      .catch((err) => console.log(err));
+  }
+
+  gitLogin() {
+    this.authService.signInWithGitHub()
+      .then((res) => {
+        console.log(res);
+        this.router.navigate(['dashboard']);
+      })
+      .catch((err) => console.log(err));
+  }
+
+  googleLogin() {
+    this.authService.signInWithGoogle()
+      .then((res) => {
+        console.log(res);
+        this.router.navigate(['dashboard']);
+      })
+      .catch((err) => console.log(err));
   }
 
 }

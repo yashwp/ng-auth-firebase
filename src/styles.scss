@@ -54,37 +54,16 @@
     position: relative;
     width: 450px;
     box-shadow: 0 7px 8px -4px rgba(0,0,0,0.2), 0 13px 19px 2px rgba(0,0,0,0.14), 0 5px 24px 4px rgba(0,0,0,0.12);
-    background: linear-gradient(to top, #03528e , rgba(0,0,0,0.02));
+    background: linear-gradient(to top, #03748e , rgba(0,0,0,0.02));
     padding: 40px 48px;
     color: white;
 
     .or-wrapper {
       position: relative;
-      hr {
-        border-top: 1px solid #fff;
-      }
-      span {
-        position: absolute;
-        width: 50px;
-        height: 50px;
-        background-color: #eee;
-        -webkit-border-radius: 50%;
-        -moz-border-radius: 50%;
-        border-radius: 50%;
-        -webkit-transform: translate(-50%, -50%);
-        -moz-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-        -o-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
-        left: 50%;
-        top: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: #999;
-        font-size: 18px;
-        text-transform: uppercase;
-      }
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-transform: uppercase;
     }
 
   .auth-apps {
@@ -110,7 +89,7 @@
           color: #3B5998;
         }
         &#git {
-          color: #777;
+          color: #333;
         }
         &#tweet {
           color: #0084b4;

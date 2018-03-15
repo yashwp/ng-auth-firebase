@@ -12,4 +12,20 @@ export class AuthService {
     this.user = this.firebaseAuth.authState;
   }
 
+  signInWithTwitter() {
+    return this.firebaseAuth.auth.signInWithPopup(new firebase.auth.TwitterAuthProvider());
+  }
+
+  signInWithFacebook() {
+    return this.firebaseAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider());
+  }
+
+  signInWithGitHub() {
+    return this.firebaseAuth.auth.signInWithPopup(new firebase.auth.GithubAuthProvider());
+  }
+
+  signInWithGoogle() {
+    return this.firebaseAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+  }
+
 }
