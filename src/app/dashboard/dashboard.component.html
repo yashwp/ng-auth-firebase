@@ -6,6 +6,11 @@
         Logged in successfully!
         <a href="javascript:void(0)" (click)="signout()"><span class="fa fa-sign-out"></span> Logout</a>
       </h1>
+      <ul>
+        <li class="white-text" *ngFor="let emp of employees | async">
+          {{emp | json}}
+        </li>
+      </ul>
     </div>
   </div>
 </div>
