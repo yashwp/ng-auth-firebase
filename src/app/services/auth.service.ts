@@ -23,6 +23,10 @@ export class AuthService {
     }
   }
 
+  getProfile() {
+    return this.userDetails;
+  }
+
   signInRegular(obj: {email, pass}) {
     const credential = firebase.auth.EmailAuthProvider.credential(obj.email, obj.pass);
     return this.firebaseAuth.auth.createUserWithEmailAndPassword(obj.email, obj.pass);

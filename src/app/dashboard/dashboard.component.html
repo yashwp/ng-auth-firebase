@@ -1,16 +1,55 @@
 
-<div class="container h-100">
+<div class="container-fluid h-100">
   <div class="row h-100">
-    <div class="col-12">
-      <h1 class="white-text">
-        Logged in successfully!
-        <a href="javascript:void(0)" (click)="signout()"><span class="fa fa-sign-out"></span> Logout</a>
-      </h1>
-      <ul>
-        <li class="white-text" *ngFor="let emp of employees | async">
-          {{emp | json}}
-        </li>
-      </ul>
+    <div class="col-3 h-100">
+      <div class="profile-container h-100 flex-1 flex-column">
+        <div *ngIf="me" class="user-profile">
+          <div class="user-profile-img">
+            <img [src]="me?.photoURL" [alt]="me?.displayName" class="img-fluid">
+          </div>
+          <div class="user-profile-detail flex flex-column align-items-center">
+            <h4 class="user-name mb-0">{{me?.displayName}}</h4>
+            <p *ngIf="me?.email" class="user-handler">{{me?.email}}</p>
+          </div>
+        </div>
+        <div class="profile-container-actions">
+          <a href="javascript:void(0)" (click)="signout()"><span class="fa fa-sign-out"></span> Logout</a>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="right-container">
+        <ng-container *ngIf="selectedEmployee">
+          <div class="row mb-5">
+            <div class="col-12">
+                <div class="emp-container white-text p-3">
+                  <div class="row">
+                    <div class="col-4 d-flex justify-content-center py-4">
+                      <div class="emp-profile">
+                        <img class="img-fluid" [src]="selectedEmployee.imgUrl" [alt]="selectedEmployee.name">
+                      </div>
+                    </div>
+                    <div class="col-8 py-4">
+                      <h4 class="mb-3">{{selectedEmployee.name}}</h4>
+                      <p class="mb-0"><span>Email: </span>{{selectedEmployee.email}}</p>
+                      <p class="mb-0"><span>DOJ: </span>{{selectedEmployee.doj}}</p>
+                      <p class="mb-0"><span>Age: </span>{{selectedEmployee.age}}</p>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </ng-container>
+        <div class="row">
+          <div class="col-12">
+            <div class="grid-container theme-box p-3">
+              <ng-container *ngIf="configObject && configObject.data">
+                <generic-table  [gtOptions]="{rowSelection: true}" [gtSettings]="configObject.settings" [gtFields]="configObject.fields" [gtData]="configObject.data"></generic-table>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

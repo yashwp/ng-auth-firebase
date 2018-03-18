@@ -1,25 +1,27 @@
-<div class="login-container">
-  <form #f="ngForm" class="app-form mb-5" (submit)="credlogin(f, f.valid)">
-    <h2 class="text-center mb-4">Log in</h2>
-    <div class="md-form app-form-field">
-      <input type="email" id="email" class="form-control" name="email" [(ngModel)]="user.email" mdbActive required>
-      <label for="email">Email</label>
+<div class="wrapper-container">
+  <div class="login-container">
+    <form #f="ngForm" class="app-form mb-5" (submit)="credlogin(f, f.valid)">
+      <h2 class="text-center mb-4">Log in</h2>
+      <div class="md-form app-form-field">
+        <input type="email" id="email" class="form-control" name="email" [(ngModel)]="user.email" mdbActive required>
+        <label for="email">Email</label>
+      </div>
+      <div class="md-form app-form-field">
+        <input type="password" id="password" class="form-control" name="password" [(ngModel)]="user.pass" mdbActive required>
+        <label for="password">Password</label>
+      </div>
+      <div class="text-center my-5">
+        <button [disabled]="!f.valid" type="submit" class="btn dark-grey-text waves-light app-form-btn" mdbRippleRadius>Login</button>
+      </div>
+    </form>
+    <div class="or-wrapper">
+      <span>or</span>
     </div>
-    <div class="md-form app-form-field">
-      <input type="password" id="password" class="form-control" name="password" [(ngModel)]="user.pass" mdbActive required>
-      <label for="password">Password</label>
+    <div class="auth-apps">
+      <a class="auth-apps-item" id="fb" href="javascript:void(0)" (click)="fbLogin()"><span class="fa fa-facebook-f"></span></a>
+      <a class="auth-apps-item" id="git" href="javascript:void(0)" (click)="gitLogin()"><span class="fa fa-github"></span></a>
+      <a class="auth-apps-item" id="tweet" href="javascript:void(0)" (click)="twitterLogin()"><span class="fa fa-twitter"></span></a>
+      <a class="auth-apps-item" id="google" href="javascript:void(0)" (click)="googleLogin()"><span class="fa fa-google"></span></a>
     </div>
-    <div class="text-center my-5">
-      <button [disabled]="!f.valid" type="submit" class="btn dark-grey-text waves-light app-form-btn" mdbRippleRadius>Login</button>
-    </div>
-  </form>
-  <div class="or-wrapper">
-    <span>or</span>
-  </div>
-  <div class="auth-apps">
-    <a class="auth-apps-item" id="fb" href="javascript:void(0)" (click)="fbLogin()"><span class="fa fa-facebook-f"></span></a>
-    <a class="auth-apps-item" id="git" href="javascript:void(0)" (click)="gitLogin()"><span class="fa fa-github"></span></a>
-    <a class="auth-apps-item" id="tweet" href="javascript:void(0)" (click)="twitterLogin()"><span class="fa fa-twitter"></span></a>
-    <a class="auth-apps-item" id="google" href="javascript:void(0)" (click)="googleLogin()"><span class="fa fa-google"></span></a>
   </div>
 </div>

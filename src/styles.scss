@@ -3,16 +3,12 @@
   background: url('./assets/img/Awesome-4K-Wallpaper-3840x2160.jpg') center no-repeat;
   -webkit-background-size: cover;
   background-size: cover;
-  height: 100vh;
+  height: 100%;
+  width: 100%;
   overflow: hidden;
   position: absolute;
   left: 0;
-  right: 0;
   top: 0;
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .app-container:before {
@@ -50,7 +46,25 @@
   }
 }
 
-.login-container {
+.theme-box {
+  box-shadow: 0 7px 33px 7px rgba(0, 0, 0, 0.2), 0 13px 19px 2px rgba(0, 0, 0, 0.14), 0 5px 24px 4px rgba(0, 0, 0, 0.12);
+  background-color: rgba(255, 255, 255, 0.16);
+}
+
+.wrapper-container {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .login-container {
     position: relative;
     width: 450px;
     box-shadow: 0 7px 33px 7px rgba(0, 0, 0, 0.2), 0 13px 19px 2px rgba(0, 0, 0, 0.14), 0 5px 24px 4px rgba(0, 0, 0, 0.12);
@@ -66,38 +80,106 @@
       text-transform: uppercase;
     }
 
-  .auth-apps {
-    display: flex;
-    justify-content: space-around;
-    padding: 40px 15px 0;
-    .auth-apps-item {
-      background-color: #eee;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      box-shadow: 0 2px 5px rgba(0,0,0,.16);
-      transition: all 0.3s ease-in-out;
+    .auth-apps {
       display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #aaa;
-      margin: auto 15px;
-      font-size: 20px;
-      &:hover {
-        box-shadow: 0 4px 15px rgba(0,0,0,.16);
-        &#fb {
-          color: #3B5998;
-        }
-        &#git {
-          color: #333;
-        }
-        &#tweet {
-          color: #0084b4;
-        }
-        &#google {
-          color: #dd4b39;
+      justify-content: space-around;
+      padding: 40px 15px 0;
+      .auth-apps-item {
+        background-color: #eee;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        box-shadow: 0 2px 5px rgba(0,0,0,.16);
+        transition: all 0.3s ease-in-out;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #aaa;
+        margin: auto 15px;
+        font-size: 20px;
+        &:hover {
+          box-shadow: 0 4px 15px rgba(0,0,0,.16);
+          &#fb {
+            color: #3B5998;
+          }
+          &#git {
+            color: #333;
+          }
+          &#tweet {
+            color: #0084b4;
+          }
+          &#google {
+            color: #dd4b39;
+          }
         }
       }
     }
   }
 }
+
+// Dashboard SCSS
+
+.profile-container {
+  @extend .theme-box;
+  margin: 25px 0;
+  color: white;
+  max-width: 380px;
+
+  .user-profile {
+    padding: 35px 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 1px solid #777;
+
+    .user-profile-img {
+      border: 3px solid #eee;
+      width: 135px;
+      border-radius: 50%;
+      img {
+        width: 100%;
+        height: 100%;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        border-radius: 50%;
+      }
+    }
+    .user-profile-detail {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 25px 0;
+
+      .user-handler {
+        color: #eeeeee;
+        &:hover {
+          text-decoration: underline;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  .profile-container-actions {
+    padding: 25px;
+    display: flex;
+    justify-content: flex-end;
+    a {
+      color: #fff;
+    }
+  }
+}
+
+.right-container {
+  margin: 25px 0;
+  color: white;
+
+  .emp-container {
+    @extend .theme-box;
+  }
+  .grid-container {
+    .table {
+      color: white;
+    }
+  }
+}
+
