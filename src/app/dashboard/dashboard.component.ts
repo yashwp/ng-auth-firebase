@@ -3,6 +3,7 @@ import {AuthService} from '../services/auth.service';
 import {AngularFirestore} from 'angularfire2/firestore';
 import {Observable} from 'rxjs/Observable';
 import {GtConfig} from '@angular-generic-table/core';
+import * as moment from 'moment';
 
 
 @Component({
@@ -99,7 +100,6 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     if (this.employees) {
       this.employees.subscribe((res) => {
-        console.log('emp', res);
         this.configObject.data = res;
       });
     }
@@ -110,7 +110,6 @@ export class DashboardComponent implements OnInit {
 
   changeEmployee(emp: any) {
     this.selectedEmployee = {...emp};
-    console.log('this.selectedEmployee ', this.selectedEmployee );
   }
 
   addEmployee() {

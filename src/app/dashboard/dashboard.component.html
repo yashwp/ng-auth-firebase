@@ -4,7 +4,7 @@
     <div class="col-3 h-100">
       <div class="profile-container h-100 flex-1 flex-column">
         <div *ngIf="me" class="user-profile">
-          <div class="user-profile-img">
+          <div *ngIf="me?.photoURL" class="user-profile-img">
             <img [src]="me?.photoURL" [alt]="me?.displayName" class="img-fluid">
           </div>
           <div class="user-profile-detail flex flex-column align-items-center">
@@ -32,7 +32,7 @@
                     <div class="col-8 py-4">
                       <h4 class="mb-3">{{selectedEmployee.name}}</h4>
                       <p class="mb-0"><span>Email: </span>{{selectedEmployee.email}}</p>
-                      <p class="mb-0"><span>DOJ: </span>{{selectedEmployee.doj}}</p>
+                      <p class="mb-0"><span>DOJ: </span>{{selectedEmployee.doj | date:'dd MMM yyyy'}}</p>
                       <p class="mb-0"><span>Age: </span>{{selectedEmployee.age}}</p>
                     </div>
                   </div>
